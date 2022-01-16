@@ -18,6 +18,10 @@ The purpose of this project is to dockerize a simple spring-boot project an run 
 
 ### Spring boot project
 
-#### Build image and push it to docker image
+#### Create image and push it to docker image
+
+```cd /app```
+
+```docker build -t my-app .```
 
 #### Deploy to Kubernetes

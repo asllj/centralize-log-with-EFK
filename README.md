@@ -16,12 +16,29 @@ The purpose of this project is to dockerize a simple spring-boot project an run 
 * docker
 * minikube
 
-### Spring boot project
+## Spring boot project
 
-#### Create image and push it to docker image
+### Create image and push it to docker image
 
 ```cd /app```
 
 ```docker build -t my-app .```
 
-#### Deploy to Kubernetes
+## Deploy to Kubernetes
+
+### Create a Secret docker-registry (in case of private image)
+
+  DOCKER_REGISTRY_SERVER=docker.io
+  DOCKER_USER=your dockerID, same as for `docker login`
+  DOCKER_EMAIL=your dockerhub email, same as for `docker login`
+  DOCKER_PASSWORD=your dockerhub pwd, same as for `docker login`
+
+  kubectl create secret docker-registry myregistrysecret \
+  --docker-server=$DOCKER_REGISTRY_SERVER \
+  --docker-username=$DOCKER_USER \
+  --docker-password=$DOCKER_PASSWORD \
+  --docker-email=$DOCKER_EMAIL
+  
+  
+
+

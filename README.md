@@ -24,20 +24,29 @@ The purpose of this project is to dockerize a simple spring-boot project an run 
 
 ```docker build -t my-app .```
 
-## Deploy to Kubernetes
-
 ### Create a Secret docker-registry (in case of private image)
 
-  DOCKER_REGISTRY_SERVER=docker.io
-  DOCKER_USER=your dockerID, same as for `docker login`
-  DOCKER_EMAIL=your dockerhub email, same as for `docker login`
-  DOCKER_PASSWORD=your dockerhub pwd, same as for `docker login`
+ ```
+ DOCKER_REGISTRY_SERVER=docker.io
+ DOCKER_USER=your dockerID, same as for `docker login`
+ DOCKER_EMAIL=your dockerhub email, same as for `docker login`
+ DOCKER_PASSWORD=your dockerhub pwd, same as for `docker login`
+```
 
-  kubectl create secret docker-registry myregistrysecret \
-  --docker-server=$DOCKER_REGISTRY_SERVER \
-  --docker-username=$DOCKER_USER \
-  --docker-password=$DOCKER_PASSWORD \
-  --docker-email=$DOCKER_EMAIL
+``` kubectl create secret docker-registry myregistrysecret \
+--docker-server=$DOCKER_REGISTRY_SERVER \
+--docker-username=$DOCKER_USER \
+--docker-password=$DOCKER_PASSWORD \
+--docker-email=$DOCKER_EMAIL 
+
+``` 
+  
+### Deploy java app to Kubernetes
+
+Inside **/app** folder run:
+
+``` kubectl apply -f deployment.yaml```
+
   
   
 
